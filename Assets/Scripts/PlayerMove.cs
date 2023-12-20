@@ -7,7 +7,8 @@ public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed;
-    [SerializeField] private bool EncountedGimmick;
+    [SerializeField] private bool isRunning;
+    [SerializeField] private bool encountedGimmick;
 
     private void Start()
     {
@@ -16,10 +17,9 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!EncountedGimmick)
-        {
-            run(rb, speed);
-        }
+        if (!encountedGimmick) { isRunning = true; }
+
+        if (isRunning) { run(rb, speed); }
     }
 
     private void run(Rigidbody2D rb, float speed)
@@ -29,9 +29,9 @@ public class PlayerMove : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Gimmick")
-        {
-            EncountedGimmick = true;
+        if (collision.gameObject.tag == "Gimmick") { 
+            encountedGimmick = true;
+            Debug.Log("Player met Gimmick");
         }
     }
 
