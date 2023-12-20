@@ -6,9 +6,9 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Umbrella : MonoBehaviour
 {
-    public bool isOpen; //傘の開閉状態
-    [SerializeField] float threshold; //dirを判別する際の閾値
-    public string dir; //傘の向き。Up, Down, Right, Leftの4パターン
+    public bool isOpen; //?P???J??????
+    [SerializeField] float threshold; //dir?????????????????l
+    public string dir; //?P???????BUp, Down, Right, Left??4?p?^?[??
 
     // Start is called before the first frame update
     void Start()
@@ -45,8 +45,8 @@ public class Umbrella : MonoBehaviour
     {
         string umbrellaDir = "";
         float angle = transform.rotation.eulerAngles.z;
-        var t = threshold / 2;
-        //角度を判定
+        var t = threshold;
+        //?p?x??????
         if (angle < t) { umbrellaDir = "Up"; }
         else if (angle < 3 * t) { umbrellaDir = "Left"; }
         else if (angle < 5 * t) { umbrellaDir = "Down"; }
