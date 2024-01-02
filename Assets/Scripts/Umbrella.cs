@@ -6,9 +6,9 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Umbrella : MonoBehaviour
 {
-    public bool isOpen; //?P???J??????
-    [SerializeField] float threshold; //dir?????????????????l
-    public string dir; //?P???????BUp, Down, Right, Left??4?p?^?[??
+    public bool isOpen; //傘の開閉状態
+    public string direction; // 傘の方向。Up, Down, Right, Leftの4種
+    [SerializeField] float threshold; //dirを決定する際の、傘の角度の閾値
 
     // Start is called before the first frame update
     void Start()
@@ -30,10 +30,13 @@ public class Umbrella : MonoBehaviour
     private void FixedUpdate()
     {
         LookMouse();
-        dir = GetDirWithDeg(threshold);
-        Debug.Log("Direction: " + transform.rotation.eulerAngles + " dir: " + dir);
+        direction = GetDirWithDeg(threshold);
+        //Debug.Log("Direction: " + transform.rotation.eulerAngles + " dir: " + direction);
     }
 
+    /// <summary>
+    ///     オブジェクトをマウスの方向に向ける
+    /// </summary>
     private void LookMouse()
     {
         var pos = Camera.main.WorldToScreenPoint(transform.position);
@@ -41,12 +44,16 @@ public class Umbrella : MonoBehaviour
         transform.localRotation = rotation;
     }
 
+    /// <summary>
+    ///     thresholdに応じて、transformの角度から上下左右を決定する
+    /// </summary>
+    /// <param name="threshold">どの角度までで区切るかの閾値</param>
+    /// <returns>Up, Leftm Down, Right のうちの1つ(String)</returns>
     private string GetDirWithDeg(float threshold)
     {
         string umbrellaDir = "";
         float angle = transform.rotation.eulerAngles.z;
         var t = threshold;
-        //?p?x??????
         if (angle < t) { umbrellaDir = "Up"; }
         else if (angle < 3 * t) { umbrellaDir = "Left"; }
         else if (angle < 5 * t) { umbrellaDir = "Down"; }

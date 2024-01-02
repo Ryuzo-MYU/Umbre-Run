@@ -10,17 +10,17 @@ public class CamChasePlayer : MonoBehaviour
         if (player != null)
         {
             // プレイヤーの位置に追従
-           ChasePlayer(player, offset);
+            ChasePlayer(player, offset);
         }
     }
 
     /// <summary>
-    /// 追従したいオブジェクトに追従する
+    ///    引数に渡したオブジェクトに一定の距離を保って追従する
     /// </summary>
-    /// <param name="t">追従したい</param>
-    /// <param name="offset"></param>
+    /// <param name="t">追従したいオブジェクトのTransform</param>
+    /// <param name="offset">オブジェクトとの距離</param>
     void ChasePlayer(Transform t, Vector3 offset)
     {
-            transform.position = t.position + offset;
+        transform.position = t.position + offset;
     }
 }

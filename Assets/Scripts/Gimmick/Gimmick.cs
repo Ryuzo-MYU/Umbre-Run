@@ -1,36 +1,48 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Gimmick : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
-    private (string, bool) umbrellaCommand;
+    [SerializeField] Umbrella umbrella;
+    [SerializeField] string direction;
+    [SerializeField] bool isOpen;
+    [SerializeField] bool isCollisionedPlayer;
 
-    public (string, bool) rightCommand;
+    public static event Action<Gimmick> OnDestroyed;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("collisioned!");
-            player = collision.gameObject.GetComponent<GameObject>();
-
-            GameObject umbrella;
-            umbrella = player.gameObject.transform.GetChild(0).gameObject;
+            Transform umbTransform = collision.gameObject.transform.GetChild(0);
+            var _umbrella = umbTransform;
+            umbrella = _umbrella.GetComponent<Umbrella>();
+            isCollisionedPlayer = true;
         }
     }
 
     private void Update()
     {
-        if(umbrellaCommand == rightCommand)
+        if (isCollisionedPlayer)
         {
-            GimmickCleared();
+            if (IsMatchingUmbrella(umbrella.direction, umbrella.isOpen))
+            {
+                Debug.Log("正しいコマンドが確認されました");
+                Destroy(gameObject);
+            }
         }
     }
 
-    public virtual void GimmickCleared()
+    private void OnDestroy()
     {
+        OnDestroyed?.Invoke(this);
+    }
 
+    private bool IsMatchingUmbrella(string direction, bool isOpen)
+    {
+        return direction == this.direction && isOpen == this.isOpen;
     }
 }
