@@ -5,42 +5,69 @@ using UnityEngine;
 
 public class Gimmick : MonoBehaviour
 {
-    [SerializeField] Umbrella umbrella;
-    [SerializeField] string direction;
-    [SerializeField] bool isOpen;
-    [SerializeField] bool isCollisionedPlayer;
+    public bool isCollisionedPlayer;
+
+    // ギミックごとの正しい方向・開閉状態
+    public string direction;
+    public bool isOpen;
+
+    // プレイヤー関連の情報
+    public GameObject player;
+    public Umbrella umbrella;
 
     public static event Action<Gimmick> OnDestroyed;
 
-    public void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("collisioned!");
-            Transform umbTransform = collision.gameObject.transform.GetChild(0);
-            var _umbrella = umbTransform;
-            umbrella = _umbrella.GetComponent<Umbrella>();
+
+            // Playerの取得
+            player = collision.gameObject;
+            player.GetComponent<Player>().EncountedGimmick = true;
+
+            // Umbrellaスクリプトの取得
+            var _umb = collision.gameObject.transform.GetChild(0);
+            umbrella = _umb.GetComponent<Umbrella>();
             isCollisionedPlayer = true;
         }
     }
 
     private void Update()
     {
+        // もしプレイヤーと接触していたら、
+        // ギミックのコマンド判定をする
         if (isCollisionedPlayer)
         {
             if (IsMatchingUmbrella(umbrella.direction, umbrella.isOpen))
             {
-                Debug.Log("正しいコマンドが確認されました");
-                Destroy(gameObject);
+                GimmickCleared();
             }
         }
     }
 
+    /// <summary>
+    ///     ギミッククリア時の処理
+    ///     各種ギミックでこの関数をオーバーライドして使う
+    /// </summary>
+    public virtual void GimmickCleared() { }
+
+    /// <summary>
+    ///     ギミック破壊時の
+    /// </summary>
     private void OnDestroy()
     {
         OnDestroyed?.Invoke(this);
     }
 
+    /// <summary>
+    ///     傘の向き・開閉状態が、自分の正解コマンド
+    ///     と合っているかを判定する
+    /// </summary>
+    /// <param name="direction"> 傘の方向 </param>
+    /// <param name="isOpen"> 傘の開閉状態 </param>
+    /// <returns></returns>
     private bool IsMatchingUmbrella(string direction, bool isOpen)
     {
         return direction == this.direction && isOpen == this.isOpen;
