@@ -8,9 +8,9 @@ public class Player : MonoBehaviour
     [SerializeField] private Rigidbody2D rb; //Run関数に使用
     [SerializeField] private float speed; //Runの速度係数
     [SerializeField] private bool encountedGimmick; //Gimmickに遭遇したかどうかのフラグ。falseならRunする
-    // プロパティ
     public bool EncountedGimmick
     {
+        // encountedGimmickのプロパティ
         get { return encountedGimmick; }
         set { encountedGimmick = value; }
     }
@@ -20,13 +20,12 @@ public class Player : MonoBehaviour
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
-        // Gimmickのイベントに購読を追加
-        Gimmick.OnDestroyed += HandleGimmickDestroyed;
     }
 
     private void FixedUpdate()
     {
         if (!encountedGimmick) { Run(rb, speed); }
+        else { Stop(rb); }
     }
 
     /// <summary>
@@ -40,17 +39,11 @@ public class Player : MonoBehaviour
     /// </param>
     private void Run(Rigidbody2D rb, float speed)
     {
-        rb.velocity = transform.right * speed;
+        rb.AddForce(Vector2.right * speed, ForceMode2D.Force);
     }
 
-    /// <summary>
-    ///     GimmickがDestroyされたときに呼ばれる
-    ///     ギミック遭遇フラフをfalseにする
-    /// </summary>
-    /// <param name="destroyedGimmick"></param>
-    private void HandleGimmickDestroyed(Gimmick destroyedGimmick)
+    private void Stop(Rigidbody2D rb)
     {
-        Debug.Log("イベント発火");
-        encountedGimmick = false;
+        rb.velocity = Vector2.zero;
     }
 }

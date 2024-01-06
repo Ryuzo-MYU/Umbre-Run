@@ -15,24 +15,7 @@ public class Gimmick : MonoBehaviour
     public GameObject player;
     public Umbrella umbrella;
 
-    public static event Action<Gimmick> OnDestroyed;
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            Debug.Log("collisioned!");
-
-            // Playerの取得
-            player = collision.gameObject;
-            player.GetComponent<Player>().EncountedGimmick = true;
-
-            // Umbrellaスクリプトの取得
-            var _umb = collision.gameObject.transform.GetChild(0);
-            umbrella = _umb.GetComponent<Umbrella>();
-            isCollisionedPlayer = true;
-        }
-    }
+    public static event Action<Gimmick> OnCleared;
 
     private void Update()
     {
@@ -47,19 +30,30 @@ public class Gimmick : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("collisioned!");
+
+            // Playerの取得
+            player = collision.gameObject;
+            player.GetComponent<Player>().EncountedGimmick = true;
+
+            // Umbrellaスクリプトの取得
+            var _umb = collision.gameObject.transform.GetChild(0);
+            umbrella = _umb.GetComponent<Umbrella>();
+
+            isCollisionedPlayer = true;
+        }
+    }
+
+
     /// <summary>
     ///     ギミッククリア時の処理
     ///     各種ギミックでこの関数をオーバーライドして使う
     /// </summary>
     public virtual void GimmickCleared() { }
-
-    /// <summary>
-    ///     ギミック破壊時の
-    /// </summary>
-    private void OnDestroy()
-    {
-        OnDestroyed?.Invoke(this);
-    }
 
     /// <summary>
     ///     傘の向き・開閉状態が、自分の正解コマンド
