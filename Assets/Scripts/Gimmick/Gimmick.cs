@@ -6,6 +6,7 @@ using UnityEngine;
 public class Gimmick : MonoBehaviour
 {
     public bool isCollisionedPlayer;
+    public bool GimmickActivated = false;
 
     // ギミックごとの正しい方向・開閉状態
     public string direction;
@@ -17,6 +18,13 @@ public class Gimmick : MonoBehaviour
 
     public static event Action<Gimmick> OnCleared;
 
+    private void Start()
+    {
+        GimmickActivated = false;
+    }
+
+    [SerializeField] private int time;
+
     private void Update()
     {
         // もしプレイヤーと接触していたら、
@@ -25,26 +33,34 @@ public class Gimmick : MonoBehaviour
         {
             if (IsMatchingUmbrella(umbrella.direction, umbrella.isOpen))
             {
-                GimmickCleared();
+                if (time > 0)
+                {
+                    GimmickCleared();
+                    time--;
+                }
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (!GimmickActivated)
         {
-            Debug.Log("collisioned!");
+            if (collision.gameObject.tag == "Player")
+            {
+                Debug.Log("collisioned!");
 
-            // Playerの取得
-            player = collision.gameObject;
-            player.GetComponent<Player>().EncountedGimmick = true;
+                // Playerの取得
+                player = collision.gameObject;
+                player.GetComponent<Player>().EncountedGimmick = true;
 
-            // Umbrellaスクリプトの取得
-            var _umb = collision.gameObject.transform.GetChild(0);
-            umbrella = _umb.GetComponent<Umbrella>();
+                // Umbrellaスクリプトの取得
+                var _umb = collision.gameObject.transform.GetChild(0);
+                umbrella = _umb.GetComponent<Umbrella>();
 
-            isCollisionedPlayer = true;
+                isCollisionedPlayer = true;
+            }
+            GimmickActivated = true;
         }
     }
 

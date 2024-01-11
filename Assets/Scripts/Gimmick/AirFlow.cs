@@ -19,5 +19,6 @@ public class AirFlow : Gimmick
         // Player‚ğã‚É”ò‚Î‚·
         Vector2 airVector = Vector2.up * airPower;
         player.GetComponent<Rigidbody2D>().AddForce(airVector, ForceMode2D.Impulse);
+        GimmickActivated = true;
     }
 }
