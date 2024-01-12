@@ -172,8 +172,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCollisionedPlayer: 0
+  GimmickActivated: 0
   direction: Up
   isOpen: 1
   player: {fileID: 0}
   umbrella: {fileID: 0}
-  airPower: 10
+  airPower: 15
+  time: 10
