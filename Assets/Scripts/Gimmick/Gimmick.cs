@@ -16,32 +16,29 @@ public class Gimmick : MonoBehaviour
     public GameObject player;
     public Umbrella umbrella;
 
-    public static event Action<Gimmick> OnCleared;
+    //public static event Action<Gimmick> OnCleared;
 
     private void Start()
     {
         GimmickActivated = false;
     }
 
-    [SerializeField] private int time;
-
     private void Update()
     {
-        // もしプレイヤーと接触していたら、
-        // ギミックのコマンド判定をする
-        if (isCollisionedPlayer)
+        // もしプレイヤーと接触していて、かつ、傘のコマンドが正しいものなら、ギミッククリア時の処理を実行する
+        if (isCollisionedPlayer &&
+            IsMatchingUmbrella(umbrella.direction, umbrella.isOpen))
         {
-            if (IsMatchingUmbrella(umbrella.direction, umbrella.isOpen))
-            {
-                if (time > 0)
-                {
-                    GimmickCleared();
-                    time--;
-                }
-            }
+            GimmickCleared();
         }
     }
 
+    /// <summary>
+    /// 衝突時の処理
+    /// PlayerとUmbrellaのスクリプトを取得する
+    /// isCollisionedPlayerをtrueにする
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!GimmickActivated)
@@ -66,18 +63,20 @@ public class Gimmick : MonoBehaviour
 
 
     /// <summary>
-    ///     ギミッククリア時の処理
-    ///     各種ギミックでこの関数をオーバーライドして使う
+    /// ギミッククリア時の処理
+    /// 各種ギミックでこの関数をオーバーライドする
     /// </summary>
     public virtual void GimmickCleared() { }
 
     /// <summary>
-    ///     傘の向き・開閉状態が、自分の正解コマンド
-    ///     と合っているかを判定する
+    /// 傘の向き・開閉状態が、自分の正解コマンドと合っているかを判定する
     /// </summary>
     /// <param name="direction"> 傘の方向 </param>
     /// <param name="isOpen"> 傘の開閉状態 </param>
-    /// <returns></returns>
+    /// <returns>
+    /// 傘のコマンドが自分の正解コマンドと一致 → true
+    /// 一致していない                         → false
+    /// </returns>
     private bool IsMatchingUmbrella(string direction, bool isOpen)
     {
         return direction == this.direction && isOpen == this.isOpen;
