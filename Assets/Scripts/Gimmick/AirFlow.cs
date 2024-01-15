@@ -16,10 +16,10 @@ public class AirFlow : Gimmick
     {
         // ギミック遭遇フラグをfalseに
         Player pl = player.GetComponent<Player>();
-        pl.EncountedGimmick = false;
 
         if (time > 0)
         {
+            pl.EncountedGimmick = false;
             // Playerを上に飛ばす
             Vector2 airVector = Vector2.up * airPower;
             player.GetComponent<Rigidbody2D>().AddForce(airVector, ForceMode2D.Impulse);

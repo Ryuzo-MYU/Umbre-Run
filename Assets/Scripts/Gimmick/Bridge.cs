@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bridge : MonoBehaviour
+public class Bridge : Gimmick
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public override void GimmickCleared()
     {
-        
+        GameObject _bridgeChild = gameObject.transform.GetChild(0).gameObject;
+        _bridgeChild.SetActive(true);
+
+        // ギミック遭遇フラグをfalseに
+        Player pl = player.GetComponent<Player>();
+        pl.EncountedGimmick = false;
     }
 }

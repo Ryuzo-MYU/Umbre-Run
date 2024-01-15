@@ -25,11 +25,18 @@ public class Gimmick : MonoBehaviour
 
     private void Update()
     {
-        // もしプレイヤーと接触していて、かつ、傘のコマンドが正しいものなら、ギミッククリア時の処理を実行する
-        if (isCollisionedPlayer &&
-            IsMatchingUmbrella(umbrella.direction, umbrella.isOpen))
+        // プレイヤーと接触していたら、コマンド判定を行う。
+        // コマンドに応じて、ギミックごとにクリア時・失敗時の処理を行う
+        if (isCollisionedPlayer)
         {
-            GimmickCleared();
+            if (IsMatchingUmbrella(umbrella.direction, umbrella.isOpen))
+            {
+                GimmickCleared();
+            }
+            else
+            {
+                GimmickFailed();
+            }
         }
     }
 
@@ -67,6 +74,12 @@ public class Gimmick : MonoBehaviour
     /// 各種ギミックでこの関数をオーバーライドする
     /// </summary>
     public virtual void GimmickCleared() { }
+
+    /// <summary>
+    /// ギミック失敗時の処理
+    /// 各種ギミックでこの関数をオーバーライドする
+    /// </summary>
+    public virtual void GimmickFailed() { }
 
     /// <summary>
     /// 傘の向き・開閉状態が、自分の正解コマンドと合っているかを判定する
