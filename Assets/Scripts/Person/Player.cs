@@ -1,18 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : Person
 {
 
     [SerializeField] private bool encountedGimmick; //Gimmickに遭遇したかどうかのフラグ。falseならRunする
-    public bool EncountedGimmick
-    {
-        // encountedGimmickのプロパティ
-        get { return encountedGimmick; }
-        set { encountedGimmick = value; }
-    }
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -24,5 +15,24 @@ public class Player : Person
     {
         if (!encountedGimmick) { Run(rb, speed); }
         else { Stop(rb); }
+    }
+
+    /// <param name="collision"></param>
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        GameObject col = collision.gameObject;
+        if (col.CompareTag("Gimmick"))
+        {
+            EncountedGimmickTrue();
+        }
+    }
+
+    private void EncountedGimmickTrue()
+    {
+        encountedGimmick = true;
+    }
+    public void EncountedGimmickFalse()
+    {
+        encountedGimmick = false;
     }
 }

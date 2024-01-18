@@ -1,19 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Rain : Gimmick
 {
     [SerializeField] Vector3 offset;
+    private bool rainActivated;
     public override void GimmickFailed()
     {
-        Transform playerTransform = player.GetComponent<Transform>();
-        playerTransform.position += offset;
-
-        Player pl = player.GetComponent<Player>();
-        pl.EncountedGimmick = false;
-
-        isCollisionedPlayer = false;
-        GimmickActivated = false;
+        if (!rainActivated)
+        {
+            Transform playerTransform = player.GetComponent<Transform>();
+            playerTransform.position += offset;
+            rainActivated = true;
+        }
     }
 }

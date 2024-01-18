@@ -361,6 +361,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3894454947936359340, guid: 44308241507c85e45837d636cbcfe703, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -605,7 +609,7 @@ GameObject:
   - component: {fileID: 716626325}
   m_Layer: 0
   m_Name: Gimmicks
-  m_TagString: Untagged
+  m_TagString: Gimmick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -839,7 +843,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 390243518379834734, guid: 8d7d1370de233414c82afad592bf709f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.09870993
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 390243518379834734, guid: 8d7d1370de233414c82afad592bf709f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -876,6 +880,10 @@ PrefabInstance:
     - target: {fileID: 8266059078823212353, guid: 8d7d1370de233414c82afad592bf709f, type: 3}
       propertyPath: m_Name
       value: Bridge
+      objectReference: {fileID: 0}
+    - target: {fileID: 8266059078823212353, guid: 8d7d1370de233414c82afad592bf709f, type: 3}
+      propertyPath: m_TagString
+      value: Gimmick
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1584,7 +1592,7 @@ GameObject:
   - component: {fileID: 1562849035}
   m_Layer: 0
   m_Name: Rain
-  m_TagString: Untagged
+  m_TagString: Gimmick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1668,11 +1676,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b1d9555f6d7e924da780db40428106d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isCollisionedPlayer: 0
-  GimmickActivated: 0
   direction: Up
   isOpen: 1
   player: {fileID: 0}
+  pl: {fileID: 0}
   umbrella: {fileID: 0}
   offset: {x: -10, y: 0, z: 0}
 --- !u!61 &1562849035
