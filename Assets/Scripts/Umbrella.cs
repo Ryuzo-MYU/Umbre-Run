@@ -6,8 +6,8 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Umbrella : MonoBehaviour
 {
-    public bool isOpen; //P‚ÌŠJ•Âó‘Ô
-    public string direction; // P‚Ì•ûŒüBUp, Down, Right, Left‚Ì4í
+    private bool isOpen; //P‚ÌŠJ•Âó‘Ô
+    private string direction; // P‚Ì•ûŒüBUp, Down, Right, Left‚Ì4í
     [SerializeField] float threshold; //dir‚ğŒˆ’è‚·‚éÛ‚ÌAP‚ÌŠp“x‚Ìè‡’l
 
     // Start is called before the first frame update
@@ -61,6 +61,16 @@ public class Umbrella : MonoBehaviour
         else { umbrellaDir = "Up"; }
 
         return umbrellaDir;
+    }
+
+    public string GetDirection()
+    {
+        return direction;
+    }
+
+    public bool GetIsOpen()
+    {
+        return isOpen;
     }
 
 }
