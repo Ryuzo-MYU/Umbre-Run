@@ -1,12 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Gimmick : MonoBehaviour
 {
-    public bool isCollisionedPlayer;
-    public bool GimmickActivated = false;
+    public bool isWorkAgain; // 複数回起動するか？
+    private bool isWorked; // 起動済みフラグ
 
     // ギミックごとの正しい方向・開閉状態
     public string direction;
@@ -14,59 +11,63 @@ public class Gimmick : MonoBehaviour
 
     // プレイヤー関連の情報
     public GameObject player;
+    public Player playerScript;
     public Umbrella umbrella;
-
-    //public static event Action<Gimmick> OnCleared;
 
     private void Start()
     {
-        GimmickActivated = false;
-    }
 
-    private void Update()
-    {
-        // もしプレイヤーと接触していて、かつ、傘のコマンドが正しいものなら、ギミッククリア時の処理を実行する
-        if (isCollisionedPlayer &&
-            IsMatchingUmbrella(umbrella.direction, umbrella.isOpen))
-        {
-            GimmickCleared();
-        }
     }
 
     /// <summary>
     /// 衝突時の処理
     /// PlayerとUmbrellaのスクリプトを取得する
-    /// isCollisionedPlayerをtrueにする
+    /// GimmickActivatedをtrueにする
     /// </summary>
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!GimmickActivated)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            if (collision.gameObject.tag == "Player")
-            {
-                Debug.Log("collisioned!");
+            Debug.Log("collisioned!");
 
-                // Playerの取得
-                player = collision.gameObject;
-                player.GetComponent<Player>().EncountedGimmick = true;
+            // Playerスクリプトの取得
+            player = collision.gameObject;
+            playerScript = player.GetComponent<Player>();
 
-                // Umbrellaスクリプトの取得
-                var _umb = collision.gameObject.transform.GetChild(0);
-                umbrella = _umb.GetComponent<Umbrella>();
-
-                isCollisionedPlayer = true;
-            }
-            GimmickActivated = true;
+            // Umbrellaスクリプトの取得
+            var _umb = collision.gameObject.transform.GetChild(0);
+            umbrella = _umb.GetComponent<Umbrella>();
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Debug.Log("Colliderオブジェクトが内部にいます");
+
+        if (IsMatchingUmbrella(umbrella.GetDirection(), umbrella.GetIsOpen()))
+        {
+            GimmickCleared();
+            Debug.Log("ギミッククリア");
+            playerScript.EncountedGimmickFalse();
+        }
+        else
+        {
+            GimmickFailed();
+        }
+    }
 
     /// <summary>
     /// ギミッククリア時の処理
     /// 各種ギミックでこの関数をオーバーライドする
     /// </summary>
-    public virtual void GimmickCleared() { }
+    protected virtual void GimmickCleared() { }
+
+    /// <summary>
+    /// ギミック失敗時の処理
+    /// 各種ギミックでこの関数をオーバーライドする
+    /// </summary>
+    protected virtual void GimmickFailed() { }
 
     /// <summary>
     /// 傘の向き・開閉状態が、自分の正解コマンドと合っているかを判定する

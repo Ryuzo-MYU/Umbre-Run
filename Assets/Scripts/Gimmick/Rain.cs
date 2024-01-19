@@ -1,18 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Rain : MonoBehaviour
+public class Rain : Gimmick
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] Vector3 offset;
+    protected override void GimmickFailed()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Transform playerTransform = player.GetComponent<Transform>();
+        playerTransform.position += offset;
+        playerScript.EncountedGimmickFalse();
     }
 }

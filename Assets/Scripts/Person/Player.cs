@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : Person
@@ -13,16 +10,32 @@ public class Player : Person
         encountedGimmick = false;
     }
 
-    public bool EncountedGimmick
-    {
-        // encountedGimmickのプロパティ
-        get { return encountedGimmick; }
-        set { encountedGimmick = value; }
-    }
 
     private void FixedUpdate()
     {
         if (!encountedGimmick) { Run(rb, speed); }
         else { Stop(rb); }
+    }
+
+    /// <param name="collision"></param>
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        GameObject col = collision.gameObject;
+        if (col.CompareTag("Gimmick"))
+        {
+            Debug.Log("Gimmickに衝突");
+            EncountedGimmickTrue();
+        }
+    }
+
+    // EncountedGimmickを操作するメソッド
+    // Gimmick側で使用する
+    private void EncountedGimmickTrue()
+    {
+        encountedGimmick = true;
+    }
+    public void EncountedGimmickFalse()
+    {
+        encountedGimmick = false;
     }
 }
