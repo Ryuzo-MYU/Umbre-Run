@@ -23,10 +23,13 @@ public class Player : Person
         GameObject col = collision.gameObject;
         if (col.CompareTag("Gimmick"))
         {
+            Debug.Log("Gimmickに衝突");
             EncountedGimmickTrue();
         }
     }
 
+    // EncountedGimmickを操作するメソッド
+    // Gimmick側で使用する
     private void EncountedGimmickTrue()
     {
         encountedGimmick = true;

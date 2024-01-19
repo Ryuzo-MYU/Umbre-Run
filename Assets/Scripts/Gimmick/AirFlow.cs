@@ -10,7 +10,7 @@ public class AirFlow : Gimmick
     /// Player‚ğã‚É”ò‚Î‚·
     /// time‚ÌƒtƒŒ[ƒ€•ªˆ—‚ğs‚¤
     /// </summary>
-    public override void GimmickCleared()
+    protected override void GimmickCleared()
     {
 
         if (time > 0)

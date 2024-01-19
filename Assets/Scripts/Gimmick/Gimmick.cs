@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Gimmick : MonoBehaviour
 {
-    private bool gimmickCollisioned; //衝突フラグ
     public bool isWorkAgain; // 複数回起動するか？
     private bool isWorked; // 起動済みフラグ
 
@@ -12,34 +11,12 @@ public class Gimmick : MonoBehaviour
 
     // プレイヤー関連の情報
     public GameObject player;
-    public Player pl;
+    public Player playerScript;
     public Umbrella umbrella;
-
-    //public static event Action<Gimmick> OnCleared;
 
     private void Start()
     {
-        gimmickCollisioned = false;
-    }
 
-    private void Update()
-    {
-        // プレイヤーと接触していて、まだ起動していないならコマンド判定を行う。
-        // コマンドに応じて、ギミックごとにクリア時・失敗時の処理を行う
-        if (gimmickCollisioned && !isWorked)
-        {
-            if (IsMatchingUmbrella(umbrella.direction, umbrella.isOpen))
-            {
-                GimmickCleared();
-                this.gameObject.GetComponent<Collider2D>().enabled = false;
-            }
-            else
-            {
-                GimmickFailed();
-            }
-            isWorked = true;
-            pl.EncountedGimmickFalse();
-        }
     }
 
     /// <summary>
@@ -56,28 +33,41 @@ public class Gimmick : MonoBehaviour
 
             // Playerスクリプトの取得
             player = collision.gameObject;
-            pl = player.GetComponent<Player>();
+            playerScript = player.GetComponent<Player>();
 
             // Umbrellaスクリプトの取得
             var _umb = collision.gameObject.transform.GetChild(0);
             umbrella = _umb.GetComponent<Umbrella>();
-
-            gimmickCollisioned = true;
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        Debug.Log("Colliderオブジェクトが内部にいます");
+
+        if (IsMatchingUmbrella(umbrella.GetDirection(), umbrella.GetIsOpen()))
+        {
+            GimmickCleared();
+            Debug.Log("ギミッククリア");
+            playerScript.EncountedGimmickFalse();
+        }
+        else
+        {
+            GimmickFailed();
+        }
+    }
 
     /// <summary>
     /// ギミッククリア時の処理
     /// 各種ギミックでこの関数をオーバーライドする
     /// </summary>
-    public virtual void GimmickCleared() { }
+    protected virtual void GimmickCleared() { }
 
     /// <summary>
     /// ギミック失敗時の処理
     /// 各種ギミックでこの関数をオーバーライドする
     /// </summary>
-    public virtual void GimmickFailed() { }
+    protected virtual void GimmickFailed() { }
 
     /// <summary>
     /// 傘の向き・開閉状態が、自分の正解コマンドと合っているかを判定する

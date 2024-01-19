@@ -171,11 +171,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed8240d137ea9b4da42cdeb664872c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isCollisionedPlayer: 0
-  GimmickActivated: 0
+  isWorkAgain: 0
   direction: Up
   isOpen: 1
   player: {fileID: 0}
+  playerScript: {fileID: 0}
   umbrella: {fileID: 0}
-  airPower: 15
+  airPower: 30
   time: 10
