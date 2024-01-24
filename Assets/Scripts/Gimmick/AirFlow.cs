@@ -6,16 +6,16 @@ public class AirFlow : Gimmick
     [SerializeField] private float time;
 
     /// <summary>
-    /// AirFlowƒNƒŠƒA‚Ìˆ—
-    /// Player‚ğã‚É”ò‚Î‚·
-    /// time‚ÌƒtƒŒ[ƒ€•ªˆ—‚ğs‚¤
+    /// AirFlowã‚¯ãƒªã‚¢æ™‚ã®å‡¦ç†
+    /// Playerã‚’ä¸Šã«é£›ã°ã™
+    /// timeã®ãƒ•ãƒ¬ãƒ¼ãƒ åˆ†å‡¦ç†ã‚’è¡Œã†
     /// </summary>
     protected override void GimmickCleared()
     {
 
         if (time > 0)
         {
-            // Player‚ğã‚É”ò‚Î‚·
+            // Playerã‚’ä¸Šã«é£›ã°ã™
             Vector2 airVector = Vector2.up * airPower;
             Rigidbody2D plrb = player.GetComponent<Rigidbody2D>();
             plrb.AddForce(airVector, ForceMode2D.Impulse);

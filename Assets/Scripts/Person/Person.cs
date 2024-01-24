@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Person : MonoBehaviour
 {
-    public float speed; //Run‚Ì‘¬“xŒW”
-    public Rigidbody2D rb; //RunŠÖ”‚Ég—p
+    public float speed; //Runã®é€Ÿåº¦ä¿‚æ•°
+    public Rigidbody2D rb; //Runé–¢æ•°ã«ä½¿ç”¨
 
     /// <summary>
-    ///     ƒIƒuƒWƒFƒNƒg‚É‰EŒü‚«‚Ì—Í‚ğ‰Á‚¦‚ÄA‰æ–Ê‰E‘¤‚Éi‚ß‚é
+    ///     ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å³å‘ãã®åŠ›ã‚’åŠ ãˆã¦ã€ç”»é¢å³å´ã«é€²ã‚ã‚‹
     /// </summary>
     /// <param name="rb">
-    ///     ƒIƒuƒWƒFƒNƒg‚ÌRigidbodyƒRƒ“ƒ|[ƒlƒ“ƒg
+    ///     ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®Rigidbodyã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
     /// </param>
     /// <param name="speed">
-    ///     ‘–‚éƒXƒs[ƒh
+    ///     èµ°ã‚‹ã‚¹ãƒ”ãƒ¼ãƒ‰
     /// </param>
     public void Run(Rigidbody2D rb, float speed)
     {

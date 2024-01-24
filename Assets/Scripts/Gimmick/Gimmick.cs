@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class Gimmick : MonoBehaviour
 {
-    public bool isWorkAgain; // •¡”‰ñ‹N“®‚·‚é‚©H
-    private bool isWorked; // ‹N“®Ï‚İƒtƒ‰ƒO
+    public bool isWorkAgain; // è¤‡æ•°å›èµ·å‹•ã™ã‚‹ã‹ï¼Ÿ
+    private bool isWorked; // èµ·å‹•æ¸ˆã¿ãƒ•ãƒ©ã‚°
 
-    // ƒMƒ~ƒbƒN‚²‚Æ‚Ì³‚µ‚¢•ûŒüEŠJ•Âó‘Ô
+    // ã‚®ãƒŸãƒƒã‚¯ã”ã¨ã®æ­£ã—ã„æ–¹å‘ãƒ»é–‹é–‰çŠ¶æ…‹
     public string direction;
     public bool isOpen;
 
-    // ƒvƒŒƒCƒ„[ŠÖ˜A‚Ìî•ñ
+    // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼é–¢é€£ã®æƒ…å ±
     public GameObject player;
     public Player playerScript;
     public Umbrella umbrella;
@@ -20,9 +20,9 @@ public class Gimmick : MonoBehaviour
     }
 
     /// <summary>
-    /// Õ“Ë‚Ìˆ—
-    /// Player‚ÆUmbrella‚ÌƒXƒNƒŠƒvƒg‚ğæ“¾‚·‚é
-    /// GimmickActivated‚ğtrue‚É‚·‚é
+    /// è¡çªæ™‚ã®å‡¦ç†
+    /// Playerã¨Umbrellaã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’å–å¾—ã™ã‚‹
+    /// GimmickActivatedã‚’trueã«ã™ã‚‹
     /// </summary>
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
@@ -31,11 +31,11 @@ public class Gimmick : MonoBehaviour
         {
             Debug.Log("collisioned!");
 
-            // PlayerƒXƒNƒŠƒvƒg‚Ìæ“¾
+            // Playerã‚¹ã‚¯ãƒªãƒ—ãƒˆã®å–å¾—
             player = collision.gameObject;
             playerScript = player.GetComponent<Player>();
 
-            // UmbrellaƒXƒNƒŠƒvƒg‚Ìæ“¾
+            // Umbrellaã‚¹ã‚¯ãƒªãƒ—ãƒˆã®å–å¾—
             var _umb = collision.gameObject.transform.GetChild(0);
             umbrella = _umb.GetComponent<Umbrella>();
         }
@@ -43,12 +43,12 @@ public class Gimmick : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("ColliderƒIƒuƒWƒFƒNƒg‚ª“à•”‚É‚¢‚Ü‚·");
+        Debug.Log("Colliderã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå†…éƒ¨ã«ã„ã¾ã™");
 
         if (IsMatchingUmbrella(umbrella.GetDirection(), umbrella.GetIsOpen()))
         {
             GimmickCleared();
-            Debug.Log("ƒMƒ~ƒbƒNƒNƒŠƒA");
+            Debug.Log("ã‚®ãƒŸãƒƒã‚¯ã‚¯ãƒªã‚¢");
             playerScript.EncountedGimmickFalse();
         }
         else
@@ -58,25 +58,25 @@ public class Gimmick : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒMƒ~ƒbƒNƒNƒŠƒA‚Ìˆ—
-    /// ŠeíƒMƒ~ƒbƒN‚Å‚±‚ÌŠÖ”‚ğƒI[ƒo[ƒ‰ƒCƒh‚·‚é
+    /// ã‚®ãƒŸãƒƒã‚¯ã‚¯ãƒªã‚¢æ™‚ã®å‡¦ç†
+    /// å„ç¨®ã‚®ãƒŸãƒƒã‚¯ã§ã“ã®é–¢æ•°ã‚’ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã™ã‚‹
     /// </summary>
     protected virtual void GimmickCleared() { }
 
     /// <summary>
-    /// ƒMƒ~ƒbƒN¸”s‚Ìˆ—
-    /// ŠeíƒMƒ~ƒbƒN‚Å‚±‚ÌŠÖ”‚ğƒI[ƒo[ƒ‰ƒCƒh‚·‚é
+    /// ã‚®ãƒŸãƒƒã‚¯å¤±æ•—æ™‚ã®å‡¦ç†
+    /// å„ç¨®ã‚®ãƒŸãƒƒã‚¯ã§ã“ã®é–¢æ•°ã‚’ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã™ã‚‹
     /// </summary>
     protected virtual void GimmickFailed() { }
 
     /// <summary>
-    /// P‚ÌŒü‚«EŠJ•Âó‘Ô‚ªA©•ª‚Ì³‰ğƒRƒ}ƒ“ƒh‚Æ‡‚Á‚Ä‚¢‚é‚©‚ğ”»’è‚·‚é
+    /// å‚˜ã®å‘ããƒ»é–‹é–‰çŠ¶æ…‹ãŒã€è‡ªåˆ†ã®æ­£è§£ã‚³ãƒãƒ³ãƒ‰ã¨åˆã£ã¦ã„ã‚‹ã‹ã‚’åˆ¤å®šã™ã‚‹
     /// </summary>
-    /// <param name="direction"> P‚Ì•ûŒü </param>
-    /// <param name="isOpen"> P‚ÌŠJ•Âó‘Ô </param>
+    /// <param name="direction"> å‚˜ã®æ–¹å‘ </param>
+    /// <param name="isOpen"> å‚˜ã®é–‹é–‰çŠ¶æ…‹ </param>
     /// <returns>
-    /// P‚ÌƒRƒ}ƒ“ƒh‚ª©•ª‚Ì³‰ğƒRƒ}ƒ“ƒh‚Æˆê’v ¨ true
-    /// ˆê’v‚µ‚Ä‚¢‚È‚¢                         ¨ false
+    /// å‚˜ã®ã‚³ãƒãƒ³ãƒ‰ãŒè‡ªåˆ†ã®æ­£è§£ã‚³ãƒãƒ³ãƒ‰ã¨ä¸€è‡´ â†’ true
+    /// ä¸€è‡´ã—ã¦ã„ãªã„                         â†’ false
     /// </returns>
     private bool IsMatchingUmbrella(string direction, bool isOpen)
     {

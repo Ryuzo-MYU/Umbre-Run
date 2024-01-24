@@ -6,9 +6,9 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Umbrella : MonoBehaviour
 {
-    private bool isOpen; //P‚ÌŠJ•Âó‘Ô
-    private string direction; // P‚Ì•ûŒüBUp, Down, Right, Left‚Ì4í
-    [SerializeField] float threshold; //dir‚ğŒˆ’è‚·‚éÛ‚ÌAP‚ÌŠp“x‚Ìè‡’l
+    private bool isOpen; //å‚˜ã®é–‹é–‰çŠ¶æ…‹
+    private string direction; // å‚˜ã®æ–¹å‘ã€‚Up, Down, Right, Leftã®4ç¨®
+    [SerializeField] float threshold; //dirã‚’æ±ºå®šã™ã‚‹éš›ã®ã€å‚˜ã®è§’åº¦ã®é–¾å€¤
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +35,7 @@ public class Umbrella : MonoBehaviour
     }
 
     /// <summary>
-    ///     ƒIƒuƒWƒFƒNƒg‚ğƒ}ƒEƒX‚Ì•ûŒü‚ÉŒü‚¯‚é
+    ///     ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒã‚¦ã‚¹ã®æ–¹å‘ã«å‘ã‘ã‚‹
     /// </summary>
     private void LookMouse()
     {
@@ -45,10 +45,10 @@ public class Umbrella : MonoBehaviour
     }
 
     /// <summary>
-    ///     threshold‚É‰‚¶‚ÄAtransform‚ÌŠp“x‚©‚çã‰º¶‰E‚ğŒˆ’è‚·‚é
+    ///     thresholdã«å¿œã˜ã¦ã€transformã®è§’åº¦ã‹ã‚‰ä¸Šä¸‹å·¦å³ã‚’æ±ºå®šã™ã‚‹
     /// </summary>
-    /// <param name="threshold">‚Ç‚ÌŠp“x‚Ü‚Å‚Å‹æØ‚é‚©‚Ìè‡’l</param>
-    /// <returns>Up, Leftm Down, Right ‚Ì‚¤‚¿‚Ì1‚Â(String)</returns>
+    /// <param name="threshold">ã©ã®è§’åº¦ã¾ã§ã§åŒºåˆ‡ã‚‹ã‹ã®é–¾å€¤</param>
+    /// <returns>Up, Leftm Down, Right ã®ã†ã¡ã®1ã¤(String)</returns>
     private string GetDirWithDeg(float threshold)
     {
         string umbrellaDir = "";
