@@ -2,23 +2,23 @@ using UnityEngine;
 
 public class CamChasePlayer : MonoBehaviour
 {
-    public Transform player;  // ƒvƒŒƒCƒ„[‚ÌTransform‚ğŠi”[‚·‚é•Ï”
-    public Vector3 offset;    // ƒJƒƒ‰‚ÆƒvƒŒƒCƒ„[‚Ì‘Š‘ÎˆÊ’uƒIƒtƒZƒbƒg
+    public Transform player;  // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®Transformã‚’æ ¼ç´ã™ã‚‹å¤‰æ•°
+    public Vector3 offset;    // ã‚«ãƒ¡ãƒ©ã¨ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ç›¸å¯¾ä½ç½®ã‚ªãƒ•ã‚»ãƒƒãƒˆ
 
     void Update()
     {
         if (player != null)
         {
-            // ƒvƒŒƒCƒ„[‚ÌˆÊ’u‚É’Ç]
+            // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ä½ç½®ã«è¿½å¾“
             ChasePlayer(player, offset);
         }
     }
 
     /// <summary>
-    ///    ˆø”‚É“n‚µ‚½ƒIƒuƒWƒFƒNƒg‚Éˆê’è‚Ì‹——£‚ğ•Û‚Á‚Ä’Ç]‚·‚é
+    ///    å¼•æ•°ã«æ¸¡ã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ä¸€å®šã®è·é›¢ã‚’ä¿ã£ã¦è¿½å¾“ã™ã‚‹
     /// </summary>
-    /// <param name="t">’Ç]‚µ‚½‚¢ƒIƒuƒWƒFƒNƒg‚ÌTransform</param>
-    /// <param name="offset">ƒIƒuƒWƒFƒNƒg‚Æ‚Ì‹——£</param>
+    /// <param name="t">è¿½å¾“ã—ãŸã„ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®Transform</param>
+    /// <param name="offset">ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã®è·é›¢</param>
     void ChasePlayer(Transform t, Vector3 offset)
     {
         transform.position = t.position + offset;

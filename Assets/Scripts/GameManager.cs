@@ -32,7 +32,7 @@ public class GameController : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒQ[ƒ€ƒNƒŠƒAŽž‚ÌUI‚ð•\Ž¦‚·‚é
+    /// ã‚²ãƒ¼ãƒ ã‚¯ãƒªã‚¢æ™‚ã®UIã‚’è¡¨ç¤ºã™ã‚‹
     /// </summary>
     /// <param name="gameOverUI"></param>
     private void ShowGameClearUI(GameObject gameClearUI)
@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒQ[ƒ€ƒI[ƒo[Žž‚ÌUI‚ð•\Ž¦‚·‚é
+    /// ã‚²ãƒ¼ãƒ ã‚ªãƒ¼ãƒãƒ¼æ™‚ã®UIã‚’è¡¨ç¤ºã™ã‚‹
     /// </summary>
     /// <param name="gameOverUI"></param>
     private void ShowGameOverUI(GameObject gameOverUI)
@@ -50,8 +50,8 @@ public class GameController : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒQ[ƒ€ƒV[ƒ“‚ð‰Šú‰»‚·‚é
-    /// GameOverUI‚ÌButtonƒIƒuƒWƒFƒNƒg‚ªŽQÆ‚µ‚Ä‚¢‚é
+    /// ã‚²ãƒ¼ãƒ ã‚·ãƒ¼ãƒ³ã‚’åˆæœŸåŒ–ã™ã‚‹
+    /// GameOverUIã®Buttonã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå‚ç…§ã—ã¦ã„ã‚‹
     /// </summary>
     public void LoadCurrentScene()
     {

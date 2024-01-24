@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    public bool isTouchedPlayer; // プレイヤー接触フラグ
+    public bool isTouchedPlayer; // 繝励Ξ繧､繝､繝ｼ謗･隗ｦ繝輔Λ繧ｰ
 
     void Start()
     {
@@ -12,7 +12,7 @@ public class Goal : MonoBehaviour
     }
 
     /// <summary>
-    /// 接触したオブジェクトがPlayerなら、プレイヤー接触フラグをtrueにする
+    /// 謗･隗ｦ縺励◆繧ｪ繝悶ず繧ｧ繧ｯ繝医′Player縺ｪ繧峨√�励Ξ繧､繝､繝ｼ謗･隗ｦ繝輔Λ繧ｰ繧稚rue縺ｫ縺吶ｋ
     /// </summary>
     /// <param name="collider"></param>
     private void OnTriggerEnter2D(Collider2D collider)
