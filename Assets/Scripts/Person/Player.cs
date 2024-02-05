@@ -28,6 +28,12 @@ public class Player : Person
         }
     }
 
+    public bool isStop()
+    {
+        if (encountedGimmick) { return true; }
+        else { return false; }
+    }
+
     // EncountedGimmickを操作するメソッド
     // Gimmick側で使用する
     private void EncountedGimmickTrue()
