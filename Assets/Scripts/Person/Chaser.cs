@@ -2,13 +2,7 @@ using UnityEngine;
 
 public class Chaser : Person
 {
-    public bool isTouchedPlayer; // プレイヤー接触フラグ
-
-    void Start()
-    {
-        rb = gameObject.GetComponent<Rigidbody2D>();
-        isTouchedPlayer = false;
-    }
+    [SerializeField] private GameController gameController;
 
     /// <summary>
     /// 接触したオブジェクトがPlayerなら、プレイヤー接触フラグをtrueにする
@@ -18,13 +12,12 @@ public class Chaser : Person
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            isTouchedPlayer = true;
+            CaughtPlayer(gameController);
         }
     }
 
-    private void FixedUpdate()
+    private void CaughtPlayer(GameController gameController)
     {
-        if (!isTouchedPlayer) { Run(rb, speed); }
-        else { Stop(rb); };
+        gameController.GameOver();
     }
 }

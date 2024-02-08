@@ -2,46 +2,28 @@ using UnityEngine;
 
 public class Player : Person
 {
-
-    [SerializeField] private bool encountedGimmick; //Gimmickに遭遇したかどうかのフラグ。falseならRunする
-    private void Start()
-    {
-        rb = gameObject.GetComponent<Rigidbody2D>();
-        encountedGimmick = false;
-    }
-
-
-    private void FixedUpdate()
-    {
-        if (!encountedGimmick) { Run(rb, speed); }
-        else { Stop(rb); }
-    }
-
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject col = collision.gameObject;
         if (col.CompareTag("Gimmick"))
         {
-            Debug.Log("Gimmickに衝突");
-            EncountedGimmickTrue();
+            EncountedGimmick();
         }
     }
 
-    public bool isStop()
-    {
-        if (encountedGimmick) { return true; }
-        else { return false; }
+    private void OnTriggerExit2D(Collider2D other) {
+        ClearedGimmick();    
     }
 
-    // EncountedGimmickを操作するメソッド
-    // Gimmick側で使用する
-    private void EncountedGimmickTrue()
+    // EncountedGimmick繧呈桃菴懊☆繧九Γ繧ｽ繝�繝�
+    // Gimmick蛛ｴ縺ｧ菴ｿ逕ｨ縺吶ｋ
+    public void ClearedGimmick()
     {
-        encountedGimmick = true;
+        canRun = true;
     }
-    public void EncountedGimmickFalse()
+    public void EncountedGimmick()
     {
-        encountedGimmick = false;
+        canRun = false;
     }
 }

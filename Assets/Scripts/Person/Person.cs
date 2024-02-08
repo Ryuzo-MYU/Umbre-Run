@@ -6,6 +6,13 @@ public class Person : MonoBehaviour
 {
     public float speed; //Runの速度係数
     public Rigidbody2D rb; //Run関数に使用
+    public bool canRun; //Gimmickに遭遇したかどうかのフラグ。falseならRunする
+
+    private void FixedUpdate()
+    {
+        if (canRun) { Run(rb, speed); }
+        else { Stop(rb); }
+    }
 
     /// <summary>
     ///     オブジェクトに右向きの力を加えて、画面右側に進める
@@ -24,5 +31,10 @@ public class Person : MonoBehaviour
     public void Stop(Rigidbody2D rb)
     {
         rb.velocity = Vector2.zero;
+    }
+    public bool isRunning()
+    {
+        if (canRun) { return true; }
+        else { return false; }
     }
 }

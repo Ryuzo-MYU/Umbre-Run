@@ -174,7 +174,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   rb: {fileID: 4816286600849282250}
-  isTouchedPlayer: 0
+  canRun: 1
+  gameController: {fileID: -7396833470358212231, guid: 4ca413add893af341af37432cea4c822, type: 3}
 --- !u!95 &6970827744969275262
 Animator:
   serializedVersion: 5
