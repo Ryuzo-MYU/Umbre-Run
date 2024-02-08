@@ -841,6 +841,18 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 18.24419
       objectReference: {fileID: 0}
+    - target: {fileID: 6943298629802739444, guid: 8d7d1370de233414c82afad592bf709f, type: 3}
+      propertyPath: m_Size.x
+      value: 1.5536284
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943298629802739444, guid: 8d7d1370de233414c82afad592bf709f, type: 3}
+      propertyPath: m_Size.y
+      value: 0.87229204
+      objectReference: {fileID: 0}
+    - target: {fileID: 6943298629802739444, guid: 8d7d1370de233414c82afad592bf709f, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.38844484
+      objectReference: {fileID: 0}
     - target: {fileID: 8266059078823212353, guid: 8d7d1370de233414c82afad592bf709f, type: 3}
       propertyPath: m_Name
       value: Bridge
@@ -2110,6 +2122,10 @@ PrefabInstance:
     - target: {fileID: 2886611603495048401, guid: 094d115e524869949897ef56ea968351, type: 3}
       propertyPath: m_Name
       value: Chaser
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886611603495048401, guid: 094d115e524869949897ef56ea968351, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5599907843283979537, guid: 094d115e524869949897ef56ea968351, type: 3}
       propertyPath: m_LocalPosition.x
