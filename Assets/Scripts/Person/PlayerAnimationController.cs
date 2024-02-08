@@ -4,22 +4,19 @@ using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour
 {
-    private Animator animator;  // アニメーターコンポーネント取得用
-    private Player player; // Playerコンポート取得用
+    private Animator animator;
+    private Player player;
 
-    // Start is called before the first frame update
     void Start()
     {
-        // アニメーターコンポーネント取得
         animator = gameObject.GetComponent<Animator>();
-        // Playerコンポーネント取得
         player = gameObject.GetComponent<Player>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player.isStop()) { animator.SetBool("wait", true); }
-        else { animator.SetBool("wait", false); }
+        if (player.isRunning()) { animator.SetBool("wait", false); }
+        else { animator.SetBool("wait", true); }
     }
 }

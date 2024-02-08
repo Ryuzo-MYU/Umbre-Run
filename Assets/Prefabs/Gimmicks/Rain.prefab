@@ -98,12 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b1d9555f6d7e924da780db40428106d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isWorkAgain: 0
   direction: Up
   isOpen: 1
   player: {fileID: 0}
   playerScript: {fileID: 0}
   umbrella: {fileID: 0}
+  chaser: {fileID: 2886611603495048401, guid: 094d115e524869949897ef56ea968351, type: 3}
   offset: {x: -10, y: 0, z: 0}
 --- !u!61 &2733452328718798422
 BoxCollider2D:

@@ -11,11 +11,6 @@ public class Gimmick : MonoBehaviour
     public Player playerScript;
     public Umbrella umbrella;
 
-    private void Start()
-    {
-
-    }
-
     /// <summary>
     /// 衝突時の処理
     /// PlayerとUmbrellaのスクリプトを取得する
@@ -40,13 +35,10 @@ public class Gimmick : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("Colliderオブジェクトが内部にいます");
-
-        if (IsMatchingUmbrella(umbrella.GetDirection(), umbrella.GetIsOpen()))
+        if (IsMatchingUmbrella(umbrella))
         {
             GimmickCleared();
-            Debug.Log("ギミッククリア");
-            playerScript.EncountedGimmickFalse();
+            playerScript.ClearedGimmick();
         }
         else
         {
@@ -75,8 +67,10 @@ public class Gimmick : MonoBehaviour
     /// 傘のコマンドが自分の正解コマンドと一致 → true
     /// 一致していない                         → false
     /// </returns>
-    private bool IsMatchingUmbrella(string direction, bool isOpen)
+    private bool IsMatchingUmbrella(Umbrella umbrella)
     {
+        string direction = umbrella.GetDirection();
+        bool isOpen = umbrella.GetIsOpen();
         return direction == this.direction && isOpen == this.isOpen;
     }
 }

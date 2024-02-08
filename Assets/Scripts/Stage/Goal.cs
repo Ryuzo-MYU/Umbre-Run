@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    public bool isTouchedPlayer; // プレイヤー接触フラグ
-
-    void Start()
-    {
-        isTouchedPlayer = false;
-    }
+    [SerializeField] private GameController gameController;
 
     /// <summary>
     /// 接触したオブジェクトがPlayerなら、プレイヤー接触フラグをtrueにする
@@ -20,7 +15,12 @@ public class Goal : MonoBehaviour
         Debug.Log("Goal !!!");
         if (collider.gameObject.CompareTag("Player"))
         {
-            isTouchedPlayer = true;
+            TouchedPlayer(gameController);
         }
+    }
+
+    private void TouchedPlayer(GameController gameControler)
+    {
+        gameControler.GameClear();
     }
 }

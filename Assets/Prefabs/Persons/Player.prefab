@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8817132523960691903}
   - component: {fileID: 2381968134752055784}
   - component: {fileID: 956125606531863008}
+  - component: {fileID: 2350556761787181123}
   - component: {fileID: 6697665642408897515}
   m_Layer: 0
   m_Name: Player
@@ -174,8 +175,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 18
-  rb: {fileID: 0}
-  encountedGimmick: 0
+  rb: {fileID: 2381968134752055784}
+  canRun: 1
+--- !u!114 &2350556761787181123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004044116673853653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d3262fbf7cbc504fb54b1e065032010, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &6697665642408897515
 Animator:
   serializedVersion: 5
@@ -225,8 +238,8 @@ Transform:
   m_GameObject: {fileID: 5097556912760363201}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.57, y: -0.22, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalPosition: {x: 0.79, y: 0.25500023, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8074874366617631193}
@@ -310,5 +323,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   open: {fileID: 21300000, guid: fb3ceb377aec4324abcab7589cd8ffba, type: 3}
   close: {fileID: 21300000, guid: baaedb22eb7be1444b3b155f20b9c15b, type: 3}
-  image: {fileID: 0}
   umbrella: {fileID: 0}
+  spriteRenderer: {fileID: 0}
