@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class Gimmick : MonoBehaviour
 {
-    public bool isWorkAgain; // 複数回起動するか？
-    private bool isWorked; // 起動済みフラグ
-
     // ギミックごとの正しい方向・開閉状態
     public string direction;
     public bool isOpen;
