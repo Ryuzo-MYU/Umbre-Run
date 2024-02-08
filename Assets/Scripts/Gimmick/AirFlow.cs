@@ -4,6 +4,7 @@ public class AirFlow : Gimmick
 {
     [SerializeField] private float airPower;
     [SerializeField] private float time;
+    [SerializeField] private bool isWorked;
 
     /// <summary>
     /// AirFlowクリア時の処理

@@ -206,8 +206,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4920538790436514084}
-  - component: {fileID: 305796634883970365}
   - component: {fileID: 6709345690329597525}
+  - component: {fileID: 305796634883970365}
+  - component: {fileID: 1571610668852497381}
   m_Layer: 0
   m_Name: Umbrella
   m_TagString: Untagged
@@ -230,19 +231,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8074874366617631193}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &305796634883970365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5097556912760363201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acd65d4f565e423429ccc17071d826fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  threshold: 45
 --- !u!212 &6709345690329597525
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -295,3 +283,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &305796634883970365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5097556912760363201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acd65d4f565e423429ccc17071d826fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  threshold: 45
+--- !u!114 &1571610668852497381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5097556912760363201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f35f819bc8f0b214cbc4d3e07264b4cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  open: {fileID: 21300000, guid: fb3ceb377aec4324abcab7589cd8ffba, type: 3}
+  close: {fileID: 21300000, guid: baaedb22eb7be1444b3b155f20b9c15b, type: 3}
+  image: {fileID: 0}
+  umbrella: {fileID: 0}
