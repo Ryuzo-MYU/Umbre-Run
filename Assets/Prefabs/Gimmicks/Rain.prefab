@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 1894076573540127751}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.094, y: -2.17, z: 0}
+  m_LocalPosition: {x: -0.094, y: -3.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -288,10 +288,10 @@ MonoBehaviour:
   player: {fileID: 0}
   playerScript: {fileID: 0}
   umbrella: {fileID: 0}
-  chaser: {fileID: 2886611603495048401, guid: 094d115e524869949897ef56ea968351, type: 3}
+  chaser: {fileID: 0}
   offset: {x: -10, y: 0, z: 0}
   audioSource: {fileID: 0}
-  audioClip: {fileID: 8300000, guid: b075c87c56a898a42a940b0161a653bc, type: 3}
+  audioClip: {fileID: 8300000, guid: 60339649d0143794f88c6b48c2611604, type: 3}
 --- !u!82 &-5865872131813321327
 AudioSource:
   m_ObjectHideFlags: 0

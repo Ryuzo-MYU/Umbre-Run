@@ -4,7 +4,7 @@ public class Bridge : Gimmick
 {
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip audioClip;
-    protected override void GimmickCleared()
+    protected override void GimmickCleared(GameObject gameobject)
     {
         Debug.Log("Bridge起動");
         GameObject bridgeChild = gameObject.transform.GetChild(0).gameObject;

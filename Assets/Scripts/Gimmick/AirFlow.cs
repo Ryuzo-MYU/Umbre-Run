@@ -13,26 +13,27 @@ public class AirFlow : Gimmick
     /// Playerを上に飛ばす
     /// timeのフレーム分処理を行う
     /// </summary>
-    protected override void GimmickCleared()
+    protected override void GimmickCleared(GameObject gameobject)
     {
+        float time = remainWorkTime;
 
-        if (remainWorkTime > 0)
+        if (time > 0)
         {
             Debug.Log("AirFlow起動");
             // Playerを上に飛ばす
             Vector2 airVector = Vector2.up * airPower;
-            Rigidbody2D plrb = player.GetComponent<Rigidbody2D>();
-            plrb.AddForce(airVector, ForceMode2D.Impulse);
+            Rigidbody2D rb = gameobject.GetComponent<Rigidbody2D>();
+            rb.AddForce(airVector, ForceMode2D.Impulse);
 
             // SE再生
             audioSource = GetComponent<AudioSource>();
             audioSource.PlayOneShot(audioClip);
 
-            remainWorkTime--;
+            time--;
         }
         else
         {
-            GetComponent<BoxCollider2D>().enabled = false;
+            gameobject = null;
         }
     }
 }

@@ -26,7 +26,7 @@ public class Gimmick : MonoBehaviour
             playerScript = player.GetComponent<Player>();
 
             // Umbrellaスクリプトの取得
-            var _umb = collision.gameObject.transform.GetChild(0);
+            var _umb = player.transform.GetChild(0);
             umbrella = _umb.GetComponent<Umbrella>();
         }
     }
@@ -37,13 +37,17 @@ public class Gimmick : MonoBehaviour
         {
             if (IsMatchingUmbrella(umbrella))
             {
-                GimmickCleared();
+                GimmickCleared(collision.gameObject);
                 playerScript.ClearedGimmick();
             }
             else
             {
-                GimmickFailed();
+                GimmickFailed(collision.gameObject);
             }
+        }
+        else if (collision.gameObject.CompareTag("Chaser"))
+        {
+            GimmickCleared(collision.gameObject);
         }
     }
 
@@ -51,13 +55,13 @@ public class Gimmick : MonoBehaviour
     /// ギミッククリア時の処理
     /// 各種ギミックでこの関数をオーバーライドする
     /// </summary>
-    protected virtual void GimmickCleared() { }
+    protected virtual void GimmickCleared(GameObject gameobject) { }
 
     /// <summary>
     /// ギミック失敗時の処理
     /// 各種ギミックでこの関数をオーバーライドする
     /// </summary>
-    protected virtual void GimmickFailed() { }
+    protected virtual void GimmickFailed(GameObject gameobject) { }
 
     /// <summary>
     /// 傘の向き・開閉状態が、自分の正解コマンドと合っているかを判定する
