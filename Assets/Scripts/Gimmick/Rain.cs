@@ -4,10 +4,16 @@ public class Rain : Gimmick
 {
     [SerializeField] GameObject chaser;
     [SerializeField] Vector3 offset;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip audioClip;
     protected override void GimmickFailed()
     {
         Debug.Log("Rain起動");
         BackCollisionedTarget();
+
+        // SE再生
+        audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(audioClip);
     }
 
     private void BackCollisionedTarget()
@@ -31,5 +37,7 @@ public class Rain : Gimmick
             // Player の位置をoffset分戻す
             player.transform.position += offset;
         }
+
+
     }
 }

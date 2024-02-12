@@ -7,17 +7,20 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private GameObject gameClearUI;
     [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private BGMController bgmController;
 
     public void GameClear()
     {
         Debug.Log("Goal !!!");
         Time.timeScale = 0f;
-        ShowGameClearUI(gameClearUI); ;
+        bgmController.GameClear();
+        ShowGameClearUI(gameClearUI);
     }
 
     public void GameOver()
     {
         Time.timeScale = 0f;
+        bgmController.GameOver();
         ShowGameOverUI(gameOverUI);
     }
 
@@ -49,5 +52,4 @@ public class GameController : MonoBehaviour
     {
         gameOverUI.SetActive(true);
     }
-
 }
