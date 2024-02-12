@@ -21,8 +21,6 @@ public class Gimmick : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("collisioned!");
-
             // Playerスクリプトの取得
             player = collision.gameObject;
             playerScript = player.GetComponent<Player>();
@@ -35,14 +33,17 @@ public class Gimmick : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (IsMatchingUmbrella(umbrella))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            GimmickCleared();
-            playerScript.ClearedGimmick();
-        }
-        else
-        {
-            GimmickFailed();
+            if (IsMatchingUmbrella(umbrella))
+            {
+                GimmickCleared();
+                playerScript.ClearedGimmick();
+            }
+            else
+            {
+                GimmickFailed();
+            }
         }
     }
 
